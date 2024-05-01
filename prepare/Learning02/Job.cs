@@ -1,9 +1,9 @@
 // Job.cs
 
-// Define the Job class
+// Here this is the public class Job syntax.
 public class Job
 {
-    // Member variables
+    // Member variables begins with an underscore and a lowercase letter
     private string _jobTitle;       // Stores the job title
     private string _description;    // Stores the job description
     private double _salary;         // Stores the job salary
