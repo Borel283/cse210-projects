@@ -1,51 +1,24 @@
 // Job.cs
+using System;
 
-// Here this is the public class Job syntax.
 public class Job
 {
     // Member variables begins with an underscore and a lowercase letter
-    private string _jobTitle;       // Stores the job title
-    private string _description;    // Stores the job description
-    private double _salary;         // Stores the job salary
+    private string _jobTitle;
+    private string _company;
+    private string _dates;
 
     // Constructor to initialize the member variables
-    public Job(string jobTitle, string description, double salary)
+    public Job(string jobTitle, string company, string dates)
     {
         _jobTitle = jobTitle;
-        _description = description;
-        _salary = salary;
+        _company = company;
+        _dates = dates;
     }
 
-    // Getter and setter methods for job title
-    public string GetJobTitle()
+    // Method to display job details
+    public void Display()
     {
-        return _jobTitle;
-    }
-
-    public void SetJobTitle(string jobTitle)
-    {
-        _jobTitle = jobTitle;
-    }
-
-    // Getter and setter methods for job description
-    public string GetDescription()
-    {
-        return _description;
-    }
-
-    public void SetDescription(string description)
-    {
-        _description = description;
-    }
-
-    // Getter and setter methods for job salary
-    public double GetSalary()
-    {
-        return _salary;
-    }
-
-    public void SetSalary(double salary)
-    {
-        _salary = salary;
+        Console.WriteLine($"{_jobTitle} ({_company}) {_dates}");
     }
 }
