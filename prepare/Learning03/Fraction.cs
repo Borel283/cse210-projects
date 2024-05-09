@@ -1,3 +1,4 @@
+
 using System;
 
 public class Fraction
@@ -5,56 +6,37 @@ public class Fraction
     private int _top;
     private int _bottom;
 
-    //  Constructor initializes the fraction to 1/1
     public Fraction()
     {
+        // Default to 1/1
         _top = 1;
         _bottom = 1;
     }
 
-    // Constructor initializes the fraction with give top and denominator as 1
-    public Fraction(int top)
+    public Fraction(int wholeNumber)
     {
-        _top = top;
+        _top = wholeNumber;
         _bottom = 1;
     }
 
-    // Constructor initializes the fraction with given top and bottom
     public Fraction(int top, int bottom)
     {
         _top = top;
-        if (bottom == 0)
-        {
-            throw new ArgumentException("Denominator cannot be zero.");
-        }
         _bottom = bottom;
     }
 
-    // Getter and Setter for private attributs
-    public int GetTop()
+    public string GetFractionString()
     {
-        return _top;
+        // Notice that this is not stored as a member variable.
+        // Is is just a temporary, local variable that will be recomputed each time this is called.
+        string text = $"{_top}/{_bottom}";
+        return text;
     }
 
-    public void SetTop(int top)
+    public double GetDecimalValue()
     {
-        _top = top;
+        // Notice that this is not stored as a member variable.
+        // Is will be recomputed each time this is called.
+        return (double)_top / (double)_bottom;
     }
-
-    public int GetBottom()
-    {
-        return _bottom;
-    }
-
-    public void SetBottom(int bottom)
-    {
-        if (bottom == 0)
-        {
-            throw new ArgumentException("Denominator cannot be zero.");
-        }
-        _bottom = bottom;
-    }
-
-   //
 }
-
