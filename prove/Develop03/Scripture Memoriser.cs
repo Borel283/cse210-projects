@@ -27,7 +27,7 @@ public class Word
         set { _isHidden = value; }
     }
 
-    // Method to get the displayed value (either the word or underscores)
+    // Constructor to get the displayed value (either the word or underscores)
     public string GetDisplayValue()
     {
         return _isHidden ? new string('_', _value.Length) : _value;
@@ -115,7 +115,7 @@ public class Scripture
         Console.WriteLine($"{_reference.GetReference()}: {string.Join(" ", _words.Select(word => word.GetDisplayValue()))}");
     }
 
-    // Constructor to see if all words are hidden
+    // Constructor to see if all the words are hidden
     public bool AllWordsHidden()
     {
         return _words.All(word => word.IsHidden);
