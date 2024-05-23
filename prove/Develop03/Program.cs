@@ -5,14 +5,6 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello Develop03 World!");
-    }
-}
-
-
-class Program
-{
-    static void Main(string[] args)
-    {
         // Create a scripture reference for John 3:16
         ScriptureReference reference = new ScriptureReference("John", "3:16");
         
