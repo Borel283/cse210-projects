@@ -17,7 +17,7 @@ class Program
         // Loop until all words are hidden or the user types 'quit'
         while (!scripture.AllWordsHidden())
         {
-            Console.WriteLine("Press enter to hide words or type 'quit' to exit.");
+            Console.WriteLine("Press 'enter' to hide words or type 'quit' to exit.");
             string input = Console.ReadLine();
             if (input.ToLower() == "quit")
                 break;
