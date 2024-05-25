@@ -1,5 +1,7 @@
 using System;
-using System.Threading;
+
+
+
 
 class MindfulnessProgram
 {
@@ -15,24 +17,29 @@ class MindfulnessProgram
             Console.WriteLine("4. Exit");
             Console.Write("Choose one of the activity (1-4): ");
 
-            int choice = int.Parse(Console.ReadLine());
-
-            switch (choice)
+            if (int.TryParse(Console.ReadLine(), out int choice))
             {
-                case 1:
-                    DoBreathingActivity();
-                    break;
-                case 2:
-                    DoReflectionActivity();
-                    break;
-                case 3:
-                    DoListingActivity();
-                    break;
-                case 4:
-                    return;
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
+                switch (choice)
+                {
+                    case 1:
+                        DoBreathingActivity();
+                        break;
+                    case 2:
+                        DoReflectionActivity();
+                        break;
+                    case 3:
+                        DoListingActivity();
+                        break;
+                    case 4:
+                        return;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a number between 1 and 4.");
             }
         }
     }
@@ -45,7 +52,7 @@ class MindfulnessProgram
         Console.WriteLine("Get ready to begin...");
         Thread.Sleep(3000);
         Console.WriteLine("Start...");
-        for (int i = 0; i < duration; i++)
+        for (int i = 0; i < duration / 4; i++) // Adjusted to fit duration in multiples of 4 seconds
         {
             Console.WriteLine("Breathe in...");
             Thread.Sleep(2000);
@@ -56,5 +63,57 @@ class MindfulnessProgram
         Thread.Sleep(3000);
     }
 
-    // The ReflectionActivity and GetDuration methods remain unchanged from previous versions
+    static void DoReflectionActivity()
+    {
+        Console.WriteLine("Reflection Activity");
+        Console.WriteLine("This activity will help you reflect on your day and your thoughts.");
+        int duration = GetDuration();
+        List<string> prompts = new List<string>
+        {
+            "What is one thing you are grateful for today?",
+            "What was the highlight of your day?",
+            "What is something you learned today?",
+            "What made you smile today?",
+            "What challenge did you overcome today?"
+        };
+        Random random = new Random();
+        for (int i = 0; i < duration / 10; i++) // Adjusted to fit duration in multiples of 10 seconds
+        {
+            Console.WriteLine(prompts[random.Next(prompts.Count)]);
+            Console.WriteLine("Reflect on this for a moment...");
+            Thread.Sleep(10000); // 10 seconds reflection
+        }
+        Console.WriteLine($"Well done! You've completed the Reflection Activity for {duration} seconds.");
+        Thread.Sleep(3000);
+    }
+
+    static void DoListingActivity()
+    {
+        Console.WriteLine("Listing Activity");
+        Console.WriteLine("This activity will help you list out things that are important to you or that you need to remember.");
+        int duration = GetDuration();
+        Console.WriteLine("Start listing things...");
+        DateTime endTime = DateTime.Now.AddSeconds(duration);
+        while (DateTime.Now < endTime)
+        {
+            string item = Console.ReadLine();
+            Console.WriteLine($"You listed: {item}");
+        }
+        Console.WriteLine($"Well done! You've completed the Listing Activity for {duration} seconds.");
+        Thread.Sleep(3000);
+    }
+
+    static int GetDuration()
+    {
+        int duration;
+        while (true)
+        {
+            Console.Write("Enter the duration of the activity in seconds: ");
+            if (int.TryParse(Console.ReadLine(), out duration) && duration > 0)
+            {
+                return duration;
+            }
+            Console.WriteLine("Invalid input. Please enter a positive number.");
+        }
+    }
 }
