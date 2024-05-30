@@ -1,7 +1,3 @@
-using System;
-
-using System.IO;
-
 public class EternalQuest
 {
     public List<Goal> Goals { get; set; }
