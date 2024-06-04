@@ -9,6 +9,10 @@ public class Event
     private string _time;
     protected Address _address;
     
+    public Event()
+    {
+        _address = new Address();
+    }
 
     public string Title
     {
